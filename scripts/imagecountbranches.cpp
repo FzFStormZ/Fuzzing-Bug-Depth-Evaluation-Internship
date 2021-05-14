@@ -93,15 +93,17 @@ VOID Fini(INT32 code, VOID *v)
 {
 
     for (std::map<ADDRINT, COUNTER>::iterator it=counterBranches.begin(); it!=counterBranches.end(); ++it) {
-        TraceFile << "ins address: 0x" << it->first
-                  << " => branch count: " << it->second._branch 
-                  << " => taken count: "  << it->second._taken << "\n";
+        if (it->second._taken != 0) {
+            TraceFile << "ins address: 0x" << it->first
+                    << " => branch count: " << it->second._branch 
+                    << " => taken count: "  << it->second._taken << "\n";
 
-        if (it->second._branch == 1) {
-            uniqbranchcount++;
+            if (it->second._branch == 1) {
+                uniqbranchcount++;
+            }
+
+            branchcount += it->second._branch;
         }
-
-        branchcount += it->second._branch;
     }
 
     TraceFile << "\n" << "Number of unique conditional branches = " << uniqbranchcount << "\n";
