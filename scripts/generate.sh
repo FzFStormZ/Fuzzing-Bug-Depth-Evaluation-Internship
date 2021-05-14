@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir build
 
 g++ -Wall -Werror -Wno-unknown-pragmas -D__PIN__=1 -DPIN_CRT=1 -fno-stack-protector -fno-exceptions -funwind-tables -fasynchronous-unwind-tables -fno-rtti -DTARGET_IA32E -DHOST_IA32E -fPIC -DTARGET_LINUX -fabi-version=2 -faligned-new  -I../pin/source/include/pin -I../pin/source/include/pin/gen -isystem ../pin/extras/stlport/include -isystem ../pin/extras/libstdc++/include -isystem ../pin/extras/crt/include -isystem ../pin/extras/crt/include/arch-x86_64 -isystem ../pin/extras/crt/include/kernel/uapi -isystem ../pin/extras/crt/include/kernel/uapi/asm-x86 -I../pin/extras/components/include -I../pin/extras/xed-intel64/include/xed -I../pin/source/tools/Utils -I../pin/source/tools/InstLib -O3 -fomit-frame-pointer -fno-strict-aliasing   -c -o build/$1.o $1.cpp
