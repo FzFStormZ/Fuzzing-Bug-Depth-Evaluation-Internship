@@ -16,7 +16,20 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 
 ofstream TraceFile;
 
+class COUNTER
+{
+  public:
+    UINT64 _branch;
+    UINT64 _taken;
+
+    COUNTER() : _branch(0), _taken(0)  {}
+
+};
+
+std::map<ADDRINT, COUNTER> counterBranches;
+
 // The running count of branches is kept here
+static UINT64 uniqbranchcount = 0;
 static UINT64 branchcount = 0;
 
 // The IMG binary
@@ -57,16 +70,19 @@ VOID Image(IMG img, VOID *v)
 VOID BranchCount(ADDRINT addr, BOOL taken)
 {
     if(CheckBounds(addr)) {
-        branchcount++;
+
+        counterBranches[addr]._branch++;
+        if (taken)
+	        counterBranches[addr]._taken++; 
     }
 }
 
 VOID Instruction(INS ins, VOID *v) 
 {
 	// Condition to insert a call (conditional branch and in the "main" executable)
-	if (INS_IsBranch(ins) && INS_HasFallThrough(ins) == true) {
+	if (INS_IsBranch(ins) && INS_HasFallThrough(ins)) {
 
-   		// Insert a call to BranchCount before every branch, no arguments are passed
+   		// Insert a call to BranchCount before every branch
         INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
 	}	
 }
@@ -75,7 +91,21 @@ VOID Instruction(INS ins, VOID *v)
 // It closes the output file.
 VOID Fini(INT32 code, VOID *v)
 {
-    TraceFile << "Number of conditional branches = " << branchcount << endl;
+
+    for (std::map<ADDRINT, COUNTER>::iterator it=counterBranches.begin(); it!=counterBranches.end(); ++it) {
+        TraceFile << "ins address: 0x" << it->first
+                  << " => branch count: " << it->second._branch 
+                  << " => taken count: "  << it->second._taken << "\n";
+
+        if (it->second._branch == 1) {
+            uniqbranchcount++;
+        }
+
+        branchcount += it->second._branch;
+    }
+
+    TraceFile << "\n" << "Number of unique conditional branches = " << uniqbranchcount << "\n";
+    TraceFile << "Number of conditional branches = " << branchcount << "\n" << endl;
 
     if (TraceFile.is_open()) { TraceFile.close(); }
 }
