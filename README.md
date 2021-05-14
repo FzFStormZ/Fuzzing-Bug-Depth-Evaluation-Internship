@@ -69,7 +69,7 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 	../../fuzzer-test-suite/libxml2-v2.9.2/build.sh
 	```
 	
-5. Run `pin` on `libxml2-v2.9.2` with the `imagecountbranches.cpp` script
+5. Run `pin` on `libxml2-v2.9.2` with the `crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28` input and the `imagecountbranches.cpp` script
 	```sh
 	../../pin/pin -t ../../scripts/build/imagecountbranches.so -o ../../results/libxml2-v2.9.2-imagecountbranches.out -- ./libxml2-v2.9.2-fsanitize_fuzzer ../../fuzzer-test-suite/libxml2-v2.9.2/crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28
 	```
