@@ -39,7 +39,7 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 │ 	└── ... 
 ├── results/
 ├── scripts/ 
-│ 	├── generate.sh 
+│ 	├── Makefile
 │ 	└── imagecountbranches.cpp 
 ├── config.sh 
 └── README.md
@@ -48,9 +48,9 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 
 ## Usage
 
-1. Go to the `scripts` folder and run `generate.sh` to compile the script 
+1. Go to the `scripts` folder and run `Makefile` to compile the script 
 	```sh
-	cd scripts && bash generate.sh imagecountbranches 
+	cd scripts && make 
 	```
 
 2. Choose the application you want to run a bug depth evaluation
