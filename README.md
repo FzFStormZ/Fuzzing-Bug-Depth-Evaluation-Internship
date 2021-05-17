@@ -37,8 +37,7 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 │ 	└── ... 
 ├── pin/ 
 │ 	└── ... 
-├── results/ 
-├── run_eval/ 
+├── results/
 ├── scripts/ 
 │ 	├── generate.sh 
 │ 	└── imagecountbranches.cpp 
@@ -59,9 +58,9 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 	libxml2-v2.9.2 for example
 	```
 	
-3. Go to `run_eval/` folder, create a new folder to contains build and binary of `libxml2-v2.9.2` and go into it
+3. Create `run_eval` folder and go into it. Create a new folder to contains build and binary of `libxml2-v2.9.2` and go into it
 	```sh
-	cd ../run_eval && mkdir libxml2-v2.9.2 && cd libxml2-v2.9.2
+	cd .. && mkdir run_eval && cd run_eval && mkdir libxml2-v2.9.2 && cd libxml2-v2.9.2
 	```
 
 4. Run the `build.sh` of `libxml2-v2.9.2`
