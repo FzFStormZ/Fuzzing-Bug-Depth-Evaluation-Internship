@@ -36,7 +36,7 @@ To get a local copy up and running follow these simple example steps :
    ```sh
    bash eval_automatic.sh libxml2-v2.9.2
    ```
-3. That's it, you can check your results ont the `results` folder :smile:
+3. That's it, you can check your results in the `results` folder :smile:
 
 
 ### Tree Graph :evergreen_tree:
