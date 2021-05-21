@@ -94,10 +94,10 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 	
 6. Run `pin` on `libxml2-v2.9.2` with the `crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28` input and the `imagecountbranches.cpp` script
 	```sh
-	../../pin/pin -t ../../scripts/build/imagecountbranches.so -o ../../results/libxml2-v2.9.2-imagecountbranches.out -- ./libxml2-v2.9.2-fsanitize_fuzzer ../../fuzzer-test-suite/libxml2-v2.9.2/crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28
+	../../pin/pin -t ../../scripts/build/imagecountbranches.so -o ../../results/libxml2-v2.9.2-crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28-imagecountbranches.out -- ./libxml2-v2.9.2-fsanitize_fuzzer ../../fuzzer-test-suite/libxml2-v2.9.2/crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28
 	```
 
-7. Enjoy your results with `libxml2-v2.9.2-imagecountbranches.out`
+7. Enjoy your results with `libxml2-v2.9.2-crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28-imagecountbranches.out`
 	```sh
-	cat ../../results/libxml2-v2.9.2-imagecountbranches.out
+	cat ../../results/libxml2-v2.9.2-crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28-imagecountbranches.out
 	```
