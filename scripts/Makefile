@@ -4,11 +4,11 @@ LDFLAGS= -shared -fabi-version=2 -Wl,--hash-style=sysv ../pin/intel64/runtime/pi
 OBJDIR=build
 
 
-"$(OBJDIR)/imagecountbranches.so": "$(OBJDIR)/imagecountbranches.o"
+"$(OBJDIR)/bugdepthevaluation.so": "$(OBJDIR)/bugdepthevaluation.o"
 	$(CC) -shared -Wl,--hash-style=sysv ../pin/intel64/runtime/pincrt/crtbeginS.o -Wl,-Bsymbolic -Wl,--version-script=../pin/source/include/pin/pintool.ver -fabi-version=2 -o $@ $< -L../pin/intel64/runtime/pincrt -L../pin/intel64/lib -L../pin/intel64/lib-ext -L../pin/extras/xed-intel64/lib -lpin -lxed ../pin/intel64/runtime/pincrt/crtendS.o -lpin3dwarf  -ldl-dynamic -nostdlib -lstlport-dynamic -lm-dynamic -lc-dynamic -lunwind-dynamic
 
 
-"$(OBJDIR)/imagecountbranches.o": imagecountbranches.cpp
+"$(OBJDIR)/bugdepthevaluation.o": bugdepthevaluation.cpp
 	mkdir $(OBJDIR)
 	$(CC) $(CXXFLAGS) -c $< -o $@
 	

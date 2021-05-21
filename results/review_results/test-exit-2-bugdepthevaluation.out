@@ -1,0 +1,27 @@
+[*] Main Binary Image: /root/Fuzzing-Bug-Depth-Evaluation-Internship/scripts/test-exit-2
+[+] Image limits 0x94586180231168 - 0x94586180239783
+
+ins address: 0x94586180235282 => branch count: 1 => taken count: 1
+ins address: 0x94586180235457 => branch count: 1 => taken count: 1
+ins address: 0x94586180235522 => branch count: 1 => taken count: 1
+ins address: 0x94586180235718 => branch count: 1 => taken count: 1
+
+call/ret address: 0x94586180235290 => call count: 0 => ret count: -1
+call/ret address: 0x94586180235432 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235480 => call count: 0 => ret count: -1
+call/ret address: 0x94586180235544 => call count: 0 => ret count: -1
+call/ret address: 0x94586180235586 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235591 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235604 => call count: 0 => ret count: -1
+call/ret address: 0x94586180235649 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235702 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235836 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235865 => call count: 1 => ret count: 0
+call/ret address: 0x94586180235892 => call count: 0 => ret count: -1
+call/ret address: 0x94586180235924 => call count: 0 => ret count: -1
+
+Number of unique conditional branches = 4 (depth)
+Number of all conditional branches = 4
+Number of unique call instruction (call and not ret) = 2 (depth)
+Number of all call instruction = 7
+
