@@ -19,34 +19,53 @@ To get a local copy up and running follow these simple example steps :
 
 ### Installation
 
+#### Locally
+
 1. Clone the repo
    ```sh
    git clone https://github.com/FzFStormZ/Fuzzing-Bug-Depth-Evaluation-Internship.git
    ```
-2. Run config script to download Intel PinTool and fuzzer-test-suite
+
+#### Google Cloud VM
+
+1. Clone the repo
    ```sh
-   bash config.sh
+   git clone https://github.com/FzFStormZ/Fuzzing-Bug-Depth-Evaluation-Internship.git
    ```
-3. That's it for now :smile:
+2. Run `eval_automatic` script to config all and run test on `libxml2-v2.9.2` with all its inputs
+   ```sh
+   bash eval_automatic.sh libxml2-v2.9.2
+   ```
+3. That's it, you can check your results ont the `results` folder :smile:
+
 
 ### Tree Graph :evergreen_tree:
 
 ```
-Fuzzing-Bug-Depth-Evaluation-Internship/ 
-├── fuzzer-test-suite/ 
-│ 	└── ... 
-├── pin/ 
-│ 	└── ... 
+Fuzzing-Bug-Depth-Evaluation-Internship/
+├── fuzzer-test-suite/
+│   └── ...
+├── pin/
+│   └── ...
 ├── results/
-├── scripts/ 
-│ 	├── Makefile
-│ 	└── imagecountbranches.cpp 
-├── config.sh 
+│   ├── review_results/
+│   │   └── ...
+│   └── ...
+├── scripts/
+│   ├── review_binaries/
+│   │   └── ...
+│   ├── bugdepthevaluation.cpp
+│   ├── generate.sh
+│   ├── imagecallgraph.cpp
+│   ├── imagecountbranches.cpp
+│   └── Makefile
+├── config.sh
+├── eval_automatic.sh
 └── README.md
    ```
 
 
-## Usage
+## Usage (locally)
 
 1. Go to the `scripts` folder and run `Makefile` to compile the script 
 	```sh
