@@ -1,5 +1,5 @@
 //
-// This tool prints a trace of image load, image limits of main executable and the number of conditional branches
+// This tool prints some metrics such as bug depth (function and conditional branches)
 //
 
 #include "pin.H"
@@ -12,25 +12,40 @@ using std::endl;
 
 
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
-    "o", "imagecountbranches.out", "specify file name");
+    "o", "bugdepthevaluation.out", "specify file name");
 
 ofstream TraceFile;
 
-class COUNTER
+class COUNTER_BRANCH
 {
   public:
-    UINT64 _branch;
-    UINT64 _taken;
+    int _branch;
+    int _taken;
 
-    COUNTER() : _branch(0), _taken(0)  {}
+    COUNTER_BRANCH() : _branch(0), _taken(0)  {}
 
 };
 
-std::map<ADDRINT, COUNTER> counterBranches;
+class COUNTER_CALL
+{
+  public:
+    int _call;
+    int _ret;
 
-// The running count of branches is kept here
-static UINT64 uniqbranchcount = 0;
-static UINT64 branchcount = 0;
+    COUNTER_CALL() : _call(0)  {}
+
+};
+
+
+// variable for conditional branches metric
+std::map<ADDRINT, COUNTER_BRANCH> branchesCounter;
+static int uniqbranchcount = 0;
+static int branchcount = 0;
+
+// variable for call graph metric
+std::map<ADDRINT, COUNTER_CALL> callCounter;
+static int uniqcallcount = 1; // 1 because of the main function
+static int callcount = 0;
 
 // The IMG binary
 IMG MainBinary;
@@ -71,20 +86,43 @@ VOID BranchCount(ADDRINT addr, BOOL taken)
 {
     if(CheckBounds(addr)) {
 
-        counterBranches[addr]._branch++;
+        branchesCounter[addr]._branch++;
         if (taken)
-	        counterBranches[addr]._taken++; 
+	        branchesCounter[addr]._taken++; 
     }
 }
 
-VOID Instruction(INS ins, VOID *v) 
+// This function is called before every call instruction is executed
+VOID CallCount(ADDRINT addr, BOOL IsCall)
 {
-	// Condition to insert a call (conditional branch and in the "main" executable)
+    if(CheckBounds(addr)) {
+        if (IsCall) {
+            callCounter[addr]._call++;
+
+        } else {
+            callCounter[addr]._ret--;
+        }
+    }
+}
+
+VOID Instruction(INS ins, VOID *v)
+{
+    // Condition to insert a call (conditional branch and in the "main" executable)
 	if (INS_IsBranch(ins) && INS_HasFallThrough(ins)) {
 
    		// Insert a call to BranchCount before every branch
         INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
-	}	
+	}
+
+    // Condition to insert a call (call instruction or ret instruction)
+    if (INS_IsCall(ins)) {
+
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_BOOL, true, IARG_END);
+        
+    } else if (INS_IsRet(ins)) {
+
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_BOOL, false, IARG_END);
+    }
 }
 
 // This function is called when the application exits
@@ -92,7 +130,7 @@ VOID Instruction(INS ins, VOID *v)
 VOID Fini(INT32 code, VOID *v)
 {
 
-    for (std::map<ADDRINT, COUNTER>::iterator it=counterBranches.begin(); it!=counterBranches.end(); ++it) {
+    for (std::map<ADDRINT, COUNTER_BRANCH>::iterator it=branchesCounter.begin(); it!=branchesCounter.end(); ++it) {
         if (it->second._taken != 0) {
             TraceFile << "ins address: 0x" << it->first
                     << " => branch count: " << it->second._branch 
@@ -106,8 +144,22 @@ VOID Fini(INT32 code, VOID *v)
         }
     }
 
-    TraceFile << "\n" << "Number of unique conditional branches = " << uniqbranchcount << "\n";
-    TraceFile << "Number of conditional branches = " << branchcount << "\n" << endl;
+    for (std::map<ADDRINT, COUNTER_CALL>::iterator it=callCounter.begin(); it!=callCounter.end(); ++it) {
+        TraceFile << "\n" << "call/ret address: 0x" << it->first
+                << " => call count: " << it->second._call
+                << " => ret count: "  << it->second._ret;
+
+        uniqcallcount += it->second._call + it->second._ret;
+
+        callcount += it->second._call;
+    }
+
+    TraceFile << "\n" << "\n" 
+                << "Number of unique conditional branches = " << uniqbranchcount << " (depth)" << "\n"
+                << "Number of all conditional branches = " << branchcount << "\n";
+
+    TraceFile   << "Number of unique call instruction (call and not ret) = " << uniqcallcount << " (depth)" << "\n"
+                << "Number of all call instruction = " << callcount << "\n" << endl;
 
     if (TraceFile.is_open()) { TraceFile.close(); }
 }
@@ -118,7 +170,7 @@ VOID Fini(INT32 code, VOID *v)
 
 INT32 Usage()
 {
-    PIN_ERROR("This tool prints a log of image load, image limits of main executable and the number of conditional branches\n"
+    PIN_ERROR("This tool prints some metrics such as bug depth (function and conditional branches)\n"
              + KNOB_BASE::StringKnobSummary() + "\n");
     return -1;
 }

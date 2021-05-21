@@ -1,0 +1,33 @@
+[*] Main Binary Image: /root/Fuzzing-Bug-Depth-Evaluation-Internship/scripts/test-no-exit
+[+] Image limits 0x94130151817216 - 0x94130151825831
+
+ins address: 0x94130151821330 => branch count: 1 => taken count: 1
+ins address: 0x94130151821473 => branch count: 1 => taken count: 1
+ins address: 0x94130151821538 => branch count: 1 => taken count: 1
+ins address: 0x94130151821681 => branch count: 110 => taken count: 100
+ins address: 0x94130151821752 => branch count: 11 => taken count: 10
+
+call/ret address: 0x94130151821338 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821448 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821496 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821560 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821602 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821607 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821620 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821687 => call count: 0 => ret count: -10
+call/ret address: 0x94130151821702 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821736 => call count: 10 => ret count: 0
+call/ret address: 0x94130151821759 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821784 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821806 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821817 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821868 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821897 => call count: 1 => ret count: 0
+call/ret address: 0x94130151821924 => call count: 0 => ret count: -1
+call/ret address: 0x94130151821956 => call count: 0 => ret count: -1
+
+Number of unique conditional branches = 3 (depth)
+Number of all conditional branches = 124
+Number of unique call instruction (call and not ret) = 1 (depth)
+Number of all call instruction = 18
+
