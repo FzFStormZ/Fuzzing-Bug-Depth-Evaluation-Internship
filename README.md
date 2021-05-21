@@ -67,32 +67,37 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 
 ## Usage (locally)
 
-1. Go to the `scripts` folder and run `Makefile` to compile the script 
+1. Run `config` script to download Pin and fuzzer-test-suite
+	```sh
+	bash config.sh
+	```
+
+2. Go to the `scripts` folder and run `Makefile` to compile the script 
 	```sh
 	cd scripts && make 
 	```
 
-2. Choose the application you want to run a bug depth evaluation
+3. Choose the application you want to run a bug depth evaluation
 	```
 	libxml2-v2.9.2 for example
 	```
 	
-3. Create `run_eval` folder and go into it. Create a new folder to contains build and binary of `libxml2-v2.9.2` and go into it
+4. Create `run_eval` folder and go into it. Create a new folder to contains build and binary of `libxml2-v2.9.2` and go into it
 	```sh
 	cd .. && mkdir run_eval && cd run_eval && mkdir libxml2-v2.9.2 && cd libxml2-v2.9.2
 	```
 
-4. Run the `build.sh` of `libxml2-v2.9.2`
+5. Run the `build.sh` of `libxml2-v2.9.2`
 	```sh
 	../../fuzzer-test-suite/libxml2-v2.9.2/build.sh
 	```
 	
-5. Run `pin` on `libxml2-v2.9.2` with the `crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28` input and the `imagecountbranches.cpp` script
+6. Run `pin` on `libxml2-v2.9.2` with the `crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28` input and the `imagecountbranches.cpp` script
 	```sh
 	../../pin/pin -t ../../scripts/build/imagecountbranches.so -o ../../results/libxml2-v2.9.2-imagecountbranches.out -- ./libxml2-v2.9.2-fsanitize_fuzzer ../../fuzzer-test-suite/libxml2-v2.9.2/crash-50b12d37d6968a2cd9eb3665d158d9a2fb1f6e28
 	```
 
-6. Enjoy your results with `libxml2-v2.9.2-imagecountbranches.out`
+7. Enjoy your results with `libxml2-v2.9.2-imagecountbranches.out`
 	```sh
 	cat ../../results/libxml2-v2.9.2-imagecountbranches.out
 	```
