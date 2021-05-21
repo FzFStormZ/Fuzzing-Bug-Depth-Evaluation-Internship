@@ -32,7 +32,7 @@ To get a local copy up and running follow these simple example steps :
    ```sh
    git clone https://github.com/FzFStormZ/Fuzzing-Bug-Depth-Evaluation-Internship.git
    ```
-2. Run `eval_automatic` script to config all and run test on `libxml2-v2.9.2` with all its inputs
+2. Run `eval_automatic` script to config all and run tests on `libxml2-v2.9.2` with all its inputs
    ```sh
    bash eval_automatic.sh libxml2-v2.9.2
    ```
