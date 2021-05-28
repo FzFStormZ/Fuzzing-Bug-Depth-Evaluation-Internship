@@ -10,7 +10,7 @@ int foo() {
         x += i * 2;
     
     // exit-3
-    exit(1);
+    //exit(1);
 
     return x;
 }

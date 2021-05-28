@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <utility>
+
 using std::ofstream;
 using std::string;
 using std::endl;
@@ -32,19 +34,20 @@ class COUNTER_CALL
     int _call;
     int _ret;
 
-    COUNTER_CALL() : _call(0)  {}
+    COUNTER_CALL() : _call(0), _ret(0)  {}
 
 };
 
 
 // variable for conditional branches metric
 std::map<ADDRINT, COUNTER_BRANCH> branchesCounter;
-static int uniqbranchcount = 0;
+static int depthbranchcount = 0;
 static int branchcount = 0;
 
 // variable for call graph metric
-std::map<ADDRINT, COUNTER_CALL> callCounter;
-static int uniqcallcount = 1; // 1 because of the main function
+std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL> callCounter;
+static int depthcallcount = 1; // 1 because of the main function
+static int uniqcallcount = 0;
 static int callcount = 0;
 
 // The IMG binary
@@ -93,14 +96,18 @@ VOID BranchCount(ADDRINT addr, BOOL taken)
 }
 
 // This function is called before every call instruction is executed
-VOID CallCount(ADDRINT addr, BOOL IsCall)
+VOID CallCount(ADDRINT addr, ADDRINT addrTarget, BOOL IsCall)
 {
     if(CheckBounds(addr)) {
+
+        std::pair<ADDRINT, ADDRINT> call (addr, addrTarget);
+
         if (IsCall) {
-            callCounter[addr]._call++;
+            
+            callCounter[call]._call++;
 
         } else {
-            callCounter[addr]._ret--;
+            callCounter[call]._ret++;
         }
     }
 }
@@ -117,11 +124,25 @@ VOID Instruction(INS ins, VOID *v)
     // Condition to insert a call (call instruction or ret instruction)
     if (INS_IsCall(ins)) {
 
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_BOOL, true, IARG_END);
+        if (INS_IsDirectControlFlow(ins)) {
+
+            ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
+            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, true, IARG_END);
+
+        } else {
+            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, true, IARG_END);
+        }
         
     } else if (INS_IsRet(ins)) {
 
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_BOOL, false, IARG_END);
+        if (INS_IsDirectControlFlow(ins)) {
+
+            ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
+            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, false, IARG_END);
+            
+        } else {
+            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, false, IARG_END);
+        }
     }
 }
 
@@ -137,28 +158,33 @@ VOID Fini(INT32 code, VOID *v)
                     << " => taken count: "  << it->second._taken << "\n";
 
             if (it->second._branch == 1) {
-                uniqbranchcount++;
+                depthbranchcount++;
             }
 
             branchcount += it->second._branch;
         }
     }
 
-    for (std::map<ADDRINT, COUNTER_CALL>::iterator it=callCounter.begin(); it!=callCounter.end(); ++it) {
-        TraceFile << "\n" << "call/ret address: 0x" << it->first
+for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounter.begin(); it!=callCounter.end(); ++it) {
+        TraceFile << "\n" << "call/ret ins address: 0x" << it->first.first << " - target: 0x" << it->first.second
                 << " => call count: " << it->second._call
                 << " => ret count: "  << it->second._ret;
 
-        uniqcallcount += it->second._call + it->second._ret;
+        depthcallcount += it->second._call - it->second._ret;
+
+        if (it->second._call == 1) {
+            uniqcallcount++;
+        }
 
         callcount += it->second._call;
     }
 
     TraceFile << "\n" << "\n" 
-                << "Number of unique conditional branches = " << uniqbranchcount << " (depth)" << "\n"
+                << "The bug depth with conditional branches = " << depthbranchcount << "\n"
                 << "Number of all conditional branches = " << branchcount << "\n";
 
-    TraceFile   << "Number of unique call instruction (call and not ret) = " << uniqcallcount << " (depth)" << "\n"
+    TraceFile   << "The bug depth with call instructions = " << depthcallcount << "\n"
+                << "Number of unique call instruction = " << uniqcallcount << "\n"
                 << "Number of all call instruction = " << callcount << "\n" << endl;
 
     if (TraceFile.is_open()) { TraceFile.close(); }
