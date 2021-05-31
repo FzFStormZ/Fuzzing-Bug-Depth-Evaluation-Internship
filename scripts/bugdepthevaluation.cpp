@@ -166,17 +166,29 @@ VOID Fini(INT32 code, VOID *v)
     }
 
 for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounter.begin(); it!=callCounter.end(); ++it) {
-        TraceFile << "\n" << "call/ret ins address: 0x" << it->first.first << " - target: 0x" << it->first.second
+        if (it->first.second == 0 && it->second._call != 0) {
+            TraceFile << "\n" << "call/ret ins address: 0x" << it->first.first << " - target: 0x" << it->first.second
+                << " => call count: " << it->second._call
+                << " => ret count: "  << it->second._ret 
+                << " (call not taken into account)";
+
+        } else {
+            TraceFile << "\n" << "call/ret ins address: 0x" << it->first.first << " - target: 0x" << it->first.second
                 << " => call count: " << it->second._call
                 << " => ret count: "  << it->second._ret;
-
+        }
+        
         depthcallcount += it->second._call - it->second._ret;
 
-        if (it->second._call == 1) {
+        // Avoid function without target address
+        if (it->second._call == 1 && it->first.second != 0) {
             uniqcallcount++;
         }
 
-        callcount += it->second._call;
+        if (it->first.second != 0) {
+            callcount += it->second._call;
+        }
+        
     }
 
     TraceFile << "\n" << "\n" 
