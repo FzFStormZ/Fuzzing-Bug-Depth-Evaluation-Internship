@@ -1,27 +1,27 @@
 [*] Main Binary Image: /root/Fuzzing-Bug-Depth-Evaluation-Internship/scripts/review_binaries/test-exit-1
-[+] Image limits 0x94222753218560 - 0x94222753227175
+[+] Image limits 0x94412304216064 - 0x94412304224679
 
-ins address: 0x94222753222674 => branch count: 1 => taken count: 1
-ins address: 0x94222753222849 => branch count: 1 => taken count: 1
-ins address: 0x94222753222914 => branch count: 1 => taken count: 1
-ins address: 0x94222753223057 => branch count: 110 => taken count: 100
-ins address: 0x94222753223131 => branch count: 11 => taken count: 10
+ins address: 0x94412304220178 => branch count: 1 => taken count: 1
+ins address: 0x94412304220353 => branch count: 1 => taken count: 1
+ins address: 0x94412304220418 => branch count: 1 => taken count: 1
+ins address: 0x94412304220561 => branch count: 110 => taken count: 100
+ins address: 0x94412304220635 => branch count: 11 => taken count: 10
 
-call/ret ins address: 0x94222753222682 - target: 0x0 => call count: 0 => ret count: 1
-call/ret ins address: 0x94222753222824 - target: 0x0 => call count: 1 => ret count: 0 (call not taken into account)
-call/ret ins address: 0x94222753222872 - target: 0x0 => call count: 0 => ret count: 1
-call/ret ins address: 0x94222753222936 - target: 0x0 => call count: 0 => ret count: 1
-call/ret ins address: 0x94222753222978 - target: 0x94222753222736 => call count: 1 => ret count: 0
-call/ret ins address: 0x94222753222983 - target: 0x94222753222832 => call count: 1 => ret count: 0
-call/ret ins address: 0x94222753222996 - target: 0x0 => call count: 0 => ret count: 1
-call/ret ins address: 0x94222753223063 - target: 0x0 => call count: 0 => ret count: 10
-call/ret ins address: 0x94222753223077 - target: 0x94222753222768 => call count: 1 => ret count: 0
-call/ret ins address: 0x94222753223115 - target: 0x94222753223017 => call count: 10 => ret count: 0
-call/ret ins address: 0x94222753223138 - target: 0x94222753223064 => call count: 1 => ret count: 0
-call/ret ins address: 0x94222753223244 - target: 0x94222753222656 => call count: 1 => ret count: 0
-call/ret ins address: 0x94222753223273 - target: 0x0 => call count: 1 => ret count: 0 (call not taken into account)
-call/ret ins address: 0x94222753223300 - target: 0x0 => call count: 0 => ret count: 1
-call/ret ins address: 0x94222753223332 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220186 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220328 - target: 0x0 => call count: 1 => ret count: 0 (call not taken into account)
+call/ret ins address: 0x94412304220376 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220440 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220482 - target: 0x94412304220240 => call count: 1 => ret count: 0
+call/ret ins address: 0x94412304220487 - target: 0x94412304220336 => call count: 1 => ret count: 0
+call/ret ins address: 0x94412304220500 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220567 - target: 0x0 => call count: 0 => ret count: 10
+call/ret ins address: 0x94412304220581 - target: 0x94412304220272 => call count: 1 => ret count: 0
+call/ret ins address: 0x94412304220619 - target: 0x94412304220521 => call count: 10 => ret count: 0
+call/ret ins address: 0x94412304220642 - target: 0x94412304220568 => call count: 1 => ret count: 0
+call/ret ins address: 0x94412304220748 - target: 0x94412304220160 => call count: 1 => ret count: 0
+call/ret ins address: 0x94412304220777 - target: 0x0 => call count: 1 => ret count: 0 (call not taken into account)
+call/ret ins address: 0x94412304220804 - target: 0x0 => call count: 0 => ret count: 1
+call/ret ins address: 0x94412304220836 - target: 0x0 => call count: 0 => ret count: 1
 
 The bug depth with conditional branches = 3
 Number of all conditional branches = 124

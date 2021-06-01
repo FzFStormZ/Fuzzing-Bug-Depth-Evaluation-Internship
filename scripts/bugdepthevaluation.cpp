@@ -7,6 +7,8 @@
 #include <fstream>
 #include <stdlib.h>
 #include <utility>
+#include <list>
+#include <algorithm>
 
 using std::ofstream;
 using std::string;
@@ -46,6 +48,7 @@ static int branchcount = 0;
 
 // variable for call graph metric
 std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL> callCounter;
+std::list<ADDRINT> targetAddressFunction;
 static int depthcallcount = 1; // 1 because of the main function
 static int uniqcallcount = 0;
 static int callcount = 0;
@@ -181,7 +184,8 @@ for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounte
         depthcallcount += it->second._call - it->second._ret;
 
         // Avoid function without target address
-        if (it->second._call == 1 && it->first.second != 0) {
+        if (it->second._call == 1 && it->first.second != 0 && std::find(targetAddressFunction.begin(), targetAddressFunction.end(), it->first.second) == targetAddressFunction.end()) {
+            targetAddressFunction.push_back(it->first.second);
             uniqcallcount++;
         }
 
