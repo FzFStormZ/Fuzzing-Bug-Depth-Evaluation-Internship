@@ -184,7 +184,7 @@ for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounte
         depthcallcount += it->second._call - it->second._ret;
 
         // Avoid function without target address
-        if (it->second._call == 1 && it->first.second != 0 && std::find(targetAddressFunction.begin(), targetAddressFunction.end(), it->first.second) == targetAddressFunction.end()) {
+        if (it->first.second != 0 && std::find(targetAddressFunction.begin(), targetAddressFunction.end(), it->first.second) == targetAddressFunction.end()) {
             targetAddressFunction.push_back(it->first.second);
             uniqcallcount++;
         }
@@ -200,8 +200,8 @@ for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounte
                 << "Number of all conditional branches = " << branchcount << "\n";
 
     TraceFile   << "The bug depth with call instructions = " << depthcallcount << "\n"
-                << "Number of unique call instruction = " << uniqcallcount << "\n"
-                << "Number of all call instruction = " << callcount << "\n" << endl;
+                << "Number of unique functions = " << uniqcallcount << "\n"
+                << "Number of all call instructions = " << callcount << "\n" << endl;
 
     if (TraceFile.is_open()) { TraceFile.close(); }
 }
