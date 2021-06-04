@@ -67,10 +67,10 @@ then
 
 elif [ "${specific}" = false ] && [ "${binary}" = true ]
 then
-    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/"${NAME}"-"${2}"-bugdepthevaluation.out -- ./"${3}" ../../fuzzer-test-suite/"${NAME}"/"${input}"
+    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/"${NAME}"-"${2}"-bugdepthevaluation.out -- ./"${3}" ../../fuzzer-test-suite/"${NAME}"/"${2}"
 
 else
-    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/"${NAME}"-"${2}"-bugdepthevaluation.out -- ./"${NAME}"-fsanitize_fuzzer ../../fuzzer-test-suite/"${NAME}"/"${input}"
+    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/"${NAME}"-"${2}"-bugdepthevaluation.out -- ./"${NAME}"-fsanitize_fuzzer ../../fuzzer-test-suite/"${NAME}"/"${2}"
 fi
 
 cd ..
