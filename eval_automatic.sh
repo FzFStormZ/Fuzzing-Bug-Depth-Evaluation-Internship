@@ -10,9 +10,12 @@ then
 fi
 
 # apt update
+# apt full-upgrade
 # apt -y install git
 
 # install all requirements
+apt -y install pkg-config
+apt -y install zlib1g-dev
 apt -y install wget
 apt -y install make
 apt -y install g++
