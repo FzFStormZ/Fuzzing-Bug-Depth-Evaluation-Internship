@@ -45,7 +45,8 @@ cd scripts && make
 cd .. && mkdir run_eval && cd run_eval && mkdir "${NAME}" && cd "${NAME}"
 ../../fuzzer-test-suite/"${NAME}"/build.sh
 
-for input in $(find ../../fuzzer-test-suite/"${NAME}" -type f ! -name "*.*" | cut -d "/" -f5)
+
+for input in $(find ../../fuzzer-test-suite/libxml2-v2.9.2 -type f ! -name "*.*" | cut -d "/" -f5)
 do
-    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/"${NAME}"-"${input}"-bugdepthevaluation.out -- ./"${NAME}"-fsanitize_fuzzer ../../fuzzer-test-suite/"${NAME}"/"${input}"
+    ../../pin/pin -t ../../scripts/build/bugdepthevaluation.so -o ../../results/libxml2-v2.9.2-"${input}"-bugdepthevaluation.out -- ./libxml2-v2.9.2-fsanitize_fuzzer ../../fuzzer-test-suite/libxml2-v2.9.2/"${input}"
 done
