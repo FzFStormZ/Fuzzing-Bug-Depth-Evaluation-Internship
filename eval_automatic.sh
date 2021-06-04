@@ -9,6 +9,17 @@ then
     exit 1
 fi
 
+# apt update
+# apt -y install git
+
+# install all requirements
+apt -y install wget
+apt -y install make
+apt -y install g++
+apt -y install clang
+apt -y install autoconf
+apt -y install libtool
+
 
 # config to have all we have want
 wget https://software.intel.com/sites/landingpage/pintool/downloads/pin-3.18-98332-gaebd7b1e6-gcc-linux.tar.gz
