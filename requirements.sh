@@ -13,6 +13,14 @@ apt -y install g++
 apt -y install clang
 apt -y install autoconf
 apt -y install libtool
+apt -y install cmake
+apt -y install golang
+apt -y install ragel
+apt -y install libbz2-dev libxml2-dev libxslt-dev python-dev libssl-dev liblzma-dev
+apt -y install nasm
+apt -y install subversion
+apt -y install libgcrypt-dev
+apt -y install libarchive-dev
 
 # config to have all we have want
 PIN=$(find . -type d -iname pin)

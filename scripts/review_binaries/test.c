@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int foo() {
     int i, x = 0;
@@ -6,7 +7,7 @@ int foo() {
     // exit-2
     //exit(1);
 
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 20; i++)
         x += i * 2;
     
     // exit-3
@@ -29,12 +30,20 @@ int main()
 {
     int y, z = 0;
 
-    for (int i = 0; i < 10; i++) {
-        y += foo();
+    const char* test = "a";
+    //const char* test2 = "f";
+
+    if (strcmp(test, "a") == 0) {
+
+        for (int i = 0; i < 20; i++) {
+            y += foo();
+        }
+
+        z = fii();
+
+        printf("%d \n", y);
+        printf("%d \n", z);
+    } else {
+        printf("%d \n", 0);
     }
-
-    z = fii();
-
-    printf("%d \n", y);
-    printf("%d \n", z);
 }

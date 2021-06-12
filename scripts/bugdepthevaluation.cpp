@@ -25,8 +25,9 @@ class COUNTER_BRANCH
   public:
     int _branch;
     int _taken;
+    int _complexity;
 
-    COUNTER_BRANCH() : _branch(0), _taken(0)  {}
+    COUNTER_BRANCH() : _branch(0), _taken(0), _complexity(0)  {}
 
 };
 
@@ -38,6 +39,30 @@ class COUNTER_CALL
 
     COUNTER_CALL() : _call(0), _ret(0)  {}
 
+};
+
+struct regRef
+{
+  std::string       name;
+  LEVEL_BASE::REG   ref;
+};
+
+
+static struct regRef regsRef[] =
+{
+  {"rax", LEVEL_BASE::REG_RAX},
+  {"rcx", LEVEL_BASE::REG_RCX},
+  {"rdx", LEVEL_BASE::REG_RDX},
+  {"eax", LEVEL_BASE::REG_RAX},
+  {"ecx", LEVEL_BASE::REG_RCX},
+  {"edx", LEVEL_BASE::REG_RDX},
+  {"ah",  LEVEL_BASE::REG_RAX},
+  {"ch",  LEVEL_BASE::REG_RCX},
+  {"dh",  LEVEL_BASE::REG_RDX},
+  {"al",  LEVEL_BASE::REG_RAX},
+  {"cl",  LEVEL_BASE::REG_RCX},
+  {"dl",  LEVEL_BASE::REG_RDX},
+  {"",    REG_INVALID()}
 };
 
 
@@ -90,63 +115,144 @@ VOID Image(IMG img, VOID *v)
 // This function is called before every branch is executed
 VOID BranchCount(ADDRINT addr, BOOL taken)
 {
-    if(CheckBounds(addr)) {
-
-        branchesCounter[addr]._branch++;
-        if (taken)
-	        branchesCounter[addr]._taken++; 
-    }
+    branchesCounter[addr]._branch++;
+    if (taken)
+        branchesCounter[addr]._taken++; 
 }
 
 // This function is called before every call instruction is executed
 VOID CallCount(ADDRINT addr, ADDRINT addrTarget, BOOL IsCall)
 {
-    if(CheckBounds(addr)) {
 
-        std::pair<ADDRINT, ADDRINT> call (addr, addrTarget);
+    std::pair<ADDRINT, ADDRINT> call (addr, addrTarget);
 
-        if (IsCall) {
-            
-            callCounter[call]._call++;
+    if (IsCall) {
+        
+        callCounter[call]._call++;
 
-        } else {
-            callCounter[call]._ret++;
+    } else {
+        callCounter[call]._ret++;
+    }
+}
+
+// This function is called before every branch is executed
+VOID ComplexityBranchCountREG(ADDRINT addr, CONTEXT *ctxt, string diss, REG reg, ADDRINT *edx)
+{
+
+    /*
+    UINT32 reg_val; 
+    //PIN_GetContextRegval(ctxt, LEVEL_BASE::REG_RAX, &reg_val);
+    reg_val = PIN_GetContextReg(ctxt, *reg);
+
+    //std::cout << std::hex << "REG_RAX: 0x" << reg_val << std::endl;
+
+    //ADDRINT *addr_ptr = (ADDRINT*)addr;
+    //UINT64 value;
+    //PIN_SafeCopy(&value, addr_ptr, sizeof(UINT64));
+
+    printf("diss: %s\n", diss.c_str());
+    printf("RAX = %08x \n", reg_val);
+    //branchesCounter[addr]._complexity = reg_val;
+    */
+
+    std::string delimiter = ",";
+    std::string token = diss.substr(diss.find(delimiter) + 2);
+
+    for (int i = 0; !(regsRef[i].name.empty()); i++) {
+        
+
+        if (regsRef[i].name == token.c_str()){
+
+            printf("diss: %s\n", token.c_str());
+            std::cout << std::hex << std::internal << std::setfill('0') 
+            << token.c_str() << " = " << std::setw(16) << PIN_GetContextReg(ctxt, regsRef[i].ref) << std::endl;
+
+            break;
         }
     }
+
+    
+
+}
+
+// This function is called before every branch is executed
+VOID ComplexityBranchCountImmediate(ADDRINT addr, UINT64 value)
+{
+    branchesCounter[addr]._complexity = value;
 }
 
 VOID Instruction(INS ins, VOID *v)
 {
-    // Condition to insert a call (conditional branch and in the "main" executable)
-	if (INS_IsBranch(ins) && INS_HasFallThrough(ins)) {
+    if (CheckBounds(INS_Address(ins))) {
+        // Condition to insert a call (conditional branch and in the "main" executable)
+        if (INS_IsBranch(ins) && INS_HasFallThrough(ins)) {
 
-   		// Insert a call to BranchCount before every branch
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
-	}
+            // Insert a call to BranchCount before every branch
+            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
 
-    // Condition to insert a call (call instruction or ret instruction)
-    if (INS_IsCall(ins)) {
+            // Condition to insert a call (CMP or TEST instruction to get the complexity of the previous conditional branch)
+            INS branch = INS_Prev(ins);
+            if (INS_Invalid() != branch) {
 
-        if (INS_IsDirectControlFlow(ins)) {
+                if (INS_Opcode(branch) == XED_ICLASS_CMP || INS_Opcode(branch) == XED_ICLASS_TEST) {
 
-            ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
-            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, true, IARG_END);
+                    if (INS_OperandIsReg(branch, 1)) {
+                        /*
+                        REG reg = INS_OperandReg(branch, 1);
+                        string diss = INS_Disassemble(branch);
 
-        } else {
-            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, true, IARG_END);
+                        printf("diss = %s\n", diss.c_str());
+                        printf("REG = %s\n", REG_StringShort(reg).c_str());
+                        */
+
+                        INS_InsertCall(branch, IPOINT_BEFORE, (AFUNPTR)ComplexityBranchCountREG,
+                                        IARG_ADDRINT, INS_Address(ins),
+                                        IARG_CONST_CONTEXT,
+                                        IARG_PTR, new string(INS_Disassemble(branch)), 
+                                        IARG_REG_CONST_REFERENCE, REG_RAX,
+                                        IARG_REG_REFERENCE, REG_RAX,
+                                        IARG_END);
+                                            
+                    } else if (INS_OperandIsImmediate(branch, 1)) {
+
+                        int value = INS_OperandImmediate(branch, 1);
+                        
+                        INS_InsertCall(branch, IPOINT_BEFORE, (AFUNPTR)ComplexityBranchCountImmediate, 
+                                        IARG_ADDRINT, INS_Address(ins), 
+                                        IARG_UINT64, value, 
+                                        IARG_END);
+                    
+                    }
+                }
+            }
         }
-        
-    } else if (INS_IsRet(ins)) {
 
-        if (INS_IsDirectControlFlow(ins)) {
 
-            ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
-            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, false, IARG_END);
+        // Condition to insert a call (call instruction or ret instruction)
+        if (INS_IsCall(ins)) {
+
+            if (INS_IsDirectControlFlow(ins)) {
+
+                ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
+                INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, true, IARG_END);
+
+            } else {
+                INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, true, IARG_END);
+            }
             
-        } else {
-            INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, false, IARG_END);
+        } else if (INS_IsRet(ins)) {
+
+            if (INS_IsDirectControlFlow(ins)) {
+
+                ADDRINT addrTarget = INS_DirectControlFlowTargetAddress(ins);
+                INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, addrTarget, IARG_BOOL, false, IARG_END);
+                
+            } else {
+                INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)CallCount, IARG_INST_PTR, IARG_ADDRINT, 0, IARG_BOOL, false, IARG_END);
+            }
         }
     }
+    
 }
 
 // This function is called when the application exits
@@ -158,7 +264,8 @@ VOID Fini(INT32 code, VOID *v)
         if (it->second._taken != 0) {
             TraceFile << "ins address: 0x" << it->first
                     << " => branch count: " << it->second._branch 
-                    << " => taken count: "  << it->second._taken << "\n";
+                    << " => taken count: "  << it->second._taken 
+                    << " => operand: 0x" << it->second._complexity << "\n";
 
             if (it->second._branch == 1) {
                 depthbranchcount++;
