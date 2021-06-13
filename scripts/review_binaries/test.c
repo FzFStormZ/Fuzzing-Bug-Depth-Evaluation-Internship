@@ -7,7 +7,7 @@ int foo() {
     // exit-2
     //exit(1);
 
-    for (i = 0; i < 20; i++)
+    for (i = 0; i < 200; i++)
         x += i * 2;
     
     // exit-3
@@ -35,7 +35,7 @@ int main()
 
     if (strcmp(test, "a") == 0) {
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 400; i++) {
             y += foo();
         }
 
