@@ -83,7 +83,7 @@ VOID Instruction(INS ins, VOID *v)
 	if (INS_IsBranch(ins) && INS_HasFallThrough(ins)) {
 
    		// Insert a call to BranchCount before every branch
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
+        	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)BranchCount, IARG_INST_PTR, IARG_BRANCH_TAKEN, IARG_END);
 	}	
 }
 
