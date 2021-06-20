@@ -1,5 +1,5 @@
 //
-// This tool prints some metrics such as bug depth (function and conditional branches)
+// This tool prints some metrics (call instructions, conditional branches and complexity of conditional branches)
 //
 
 #include "pin.H"
@@ -65,13 +65,13 @@ static struct regRef regsRef[] =
   {"",    REG_INVALID()}
 };
 
-// variable for conditional branches metric
+// variable for conditional branches and complexity metrics
 std::map<ADDRINT, COUNTER_BRANCH> branchesCounter;
 static int depthbranchcount = 0;
 static int branchcount = 0;
 static int complexitycount = 0;
 
-// variable for call graph metric
+// variable for call instructions metric
 std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL> callCounter;
 std::list<ADDRINT> targetAddressFunction;
 static int depthcallcount = 1; // 1 because of the main function
@@ -99,8 +99,6 @@ BOOL CheckBounds(ADDRINT addr) {
 }
 
 // Pin calls this function every time a new img is loaded
-// It can instrument the image, but this example does not
-// Note that imgs (including shared libraries) are loaded lazily
 VOID Image(IMG img, VOID *v)
 {
     if (IMG_IsMainExecutable(img)) {
@@ -200,6 +198,7 @@ VOID ComplexityBranchCountImmediate(ADDRINT addr, UINT64 value)
     nb_non_zero_byte = 0;
 }
 
+// Pin calls this function for every instruction in the binary
 VOID Instruction(INS ins, VOID *v)
 {
 
@@ -357,7 +356,7 @@ for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounte
 
 INT32 Usage()
 {
-    PIN_ERROR("This tool prints some metrics such as bug depth (function and conditional branches)\n"
+    PIN_ERROR("This tool prints some metrics (call instructions, conditional branches and complexity of conditional branches)\n"
              + KNOB_BASE::StringKnobSummary() + "\n");
     return -1;
 }
@@ -379,7 +378,7 @@ int main(int argc, char * argv[])
     // Register ImageLoad to be called when an image is loaded
     IMG_AddInstrumentFunction(Image, 0);
 
-    // Function
+    // Function to instrument
     INS_AddInstrumentFunction(Instruction, 0);
 
     // Register Fini to be called when the application exits
