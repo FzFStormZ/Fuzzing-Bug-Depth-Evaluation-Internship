@@ -299,16 +299,17 @@ VOID Fini(INT32 code, VOID *v)
                     << " => taken count: "  << it->second._taken 
                     << " => complexe?: " << (it->second._complexity ? "true" : "false") << "\n";
 
-            if (it->second._branch == 1) {
-                depthbranchcount++;
-            }
-
+            // Only multi-bytes non-zero comparison
             if (it->second._complexity) {
-                complexitycount++;
+                complexitycount += it->second._taken;
             }
-
-            branchcount += it->second._branch;
+		
+	    // Only conditional branches taken 
+            depthbranchcount += it->second._taken;
         }
+	
+	// All conditional branches (taken or not)
+    	branchcount += it->second._branch;
     }
 
 for (std::map<std::pair<ADDRINT, ADDRINT>, COUNTER_CALL>::iterator it=callCounter.begin(); it!=callCounter.end(); ++it) {
