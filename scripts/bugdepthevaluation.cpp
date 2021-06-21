@@ -304,11 +304,11 @@ VOID Fini(INT32 code, VOID *v)
                 complexitycount += it->second._taken;
             }
 		
-	    // Only conditional branches taken 
+	        // Only conditional branches taken 
             depthbranchcount += it->second._taken;
         }
 	
-	// All conditional branches (taken or not)
+	    // All conditional branches (taken or not)
     	branchcount += it->second._branch;
     }
 
