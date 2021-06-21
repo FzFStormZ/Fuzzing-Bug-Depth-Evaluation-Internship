@@ -179,29 +179,29 @@ ins address: 0x4510298 => branch count: 2 => taken count: 1 => complexe?: false
 ins address: 0x4510380 => branch count: 1 => taken count: 1 => complexe?: true
 ins address: 0x4510591 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x4512055 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x4512170 => branch count: 15585 => taken count: 15507 => complexe?: false
-ins address: 0x4512178 => branch count: 78 => taken count: 16 => complexe?: false
+ins address: 0x4512170 => branch count: 15593 => taken count: 15516 => complexe?: false
+ins address: 0x4512178 => branch count: 77 => taken count: 15 => complexe?: false
 ins address: 0x4512190 => branch count: 62 => taken count: 9 => complexe?: false
 ins address: 0x4512211 => branch count: 53 => taken count: 3 => complexe?: false
 ins address: 0x4512260 => branch count: 12 => taken count: 12 => complexe?: false
-ins address: 0x4512306 => branch count: 39990 => taken count: 15522 => complexe?: false
-ins address: 0x4512333 => branch count: 24468 => taken count: 2835 => complexe?: false
-ins address: 0x4512368 => branch count: 24468 => taken count: 24464 => complexe?: false
-ins address: 0x4512399 => branch count: 4 => taken count: 4 => complexe?: false
-ins address: 0x4512425 => branch count: 15522 => taken count: 15503 => complexe?: false
-ins address: 0x4512457 => branch count: 24483 => taken count: 19 => complexe?: false
-ins address: 0x4512467 => branch count: 24464 => taken count: 24303 => complexe?: true
-ins address: 0x4512521 => branch count: 2835 => taken count: 2835 => complexe?: false
+ins address: 0x4512306 => branch count: 39998 => taken count: 15529 => complexe?: false
+ins address: 0x4512333 => branch count: 24469 => taken count: 2836 => complexe?: false
+ins address: 0x4512368 => branch count: 24469 => taken count: 24463 => complexe?: false
+ins address: 0x4512399 => branch count: 6 => taken count: 6 => complexe?: false
+ins address: 0x4512425 => branch count: 15529 => taken count: 15510 => complexe?: false
+ins address: 0x4512457 => branch count: 24482 => taken count: 19 => complexe?: false
+ins address: 0x4512467 => branch count: 24463 => taken count: 24303 => complexe?: true
+ins address: 0x4512521 => branch count: 2836 => taken count: 2836 => complexe?: false
 ins address: 0x4512543 => branch count: 19 => taken count: 19 => complexe?: false
-ins address: 0x4512670 => branch count: 24468 => taken count: 4 => complexe?: false
-ins address: 0x4512691 => branch count: 24464 => taken count: 24464 => complexe?: false
+ins address: 0x4512670 => branch count: 24469 => taken count: 6 => complexe?: false
+ins address: 0x4512691 => branch count: 24463 => taken count: 24463 => complexe?: false
 ins address: 0x4512980 => branch count: 265 => taken count: 5 => complexe?: false
 ins address: 0x4512986 => branch count: 260 => taken count: 180 => complexe?: false
 ins address: 0x4513098 => branch count: 265 => taken count: 195 => complexe?: true
 ins address: 0x4513142 => branch count: 24395 => taken count: 24325 => complexe?: true
 ins address: 0x4513156 => branch count: 265 => taken count: 260 => complexe?: false
-ins address: 0x4514952 => branch count: 15522 => taken count: 7998 => complexe?: false
-ins address: 0x4515467 => branch count: 7998 => taken count: 7979 => complexe?: false
+ins address: 0x4514952 => branch count: 15529 => taken count: 7988 => complexe?: false
+ins address: 0x4515467 => branch count: 7988 => taken count: 7969 => complexe?: false
 ins address: 0x4515483 => branch count: 19 => taken count: 19 => complexe?: false
 ins address: 0x4516249 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x4516347 => branch count: 1 => taken count: 1 => complexe?: false
@@ -401,8 +401,8 @@ ins address: 0x5002677 => branch count: 2 => taken count: 2 => complexe?: false
 ins address: 0x5033924 => branch count: 19 => taken count: 19 => complexe?: false
 ins address: 0x5094017 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5094107 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x5094268 => branch count: 1957 => taken count: 1956 => complexe?: false
-ins address: 0x5094427 => branch count: 570 => taken count: 569 => complexe?: false
+ins address: 0x5094268 => branch count: 2036 => taken count: 2035 => complexe?: false
+ins address: 0x5094427 => branch count: 281 => taken count: 280 => complexe?: false
 ins address: 0x5110061 => branch count: 1 => taken count: 1 => complexe?: true
 ins address: 0x5110136 => branch count: 1 => taken count: 1 => complexe?: true
 ins address: 0x5110211 => branch count: 1 => taken count: 1 => complexe?: true
@@ -1032,7 +1032,7 @@ ins address: 0x5269836 => branch count: 4 => taken count: 4 => complexe?: false
 ins address: 0x5269882 => branch count: 4 => taken count: 4 => complexe?: false
 ins address: 0x5270400 => branch count: 8 => taken count: 2 => complexe?: false
 ins address: 0x5270413 => branch count: 6 => taken count: 6 => complexe?: false
-ins address: 0x5270574 => branch count: 30 => taken count: 24 => complexe?: false
+ins address: 0x5270574 => branch count: 24 => taken count: 18 => complexe?: false
 ins address: 0x5270611 => branch count: 2 => taken count: 2 => complexe?: false
 ins address: 0x5270685 => branch count: 2 => taken count: 2 => complexe?: false
 ins address: 0x5270816 => branch count: 3 => taken count: 1 => complexe?: false
@@ -1061,7 +1061,7 @@ ins address: 0x5271647 => branch count: 2 => taken count: 1 => complexe?: false
 ins address: 0x5271705 => branch count: 14 => taken count: 12 => complexe?: false
 ins address: 0x5271721 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5272311 => branch count: 114 => taken count: 2 => complexe?: false
-ins address: 0x5272375 => branch count: 75021 => taken count: 74909 => complexe?: false
+ins address: 0x5272375 => branch count: 75023 => taken count: 74911 => complexe?: false
 ins address: 0x5272380 => branch count: 114 => taken count: 111 => complexe?: false
 ins address: 0x5272395 => branch count: 7 => taken count: 4 => complexe?: false
 ins address: 0x5272521 => branch count: 95 => taken count: 83 => complexe?: false
@@ -1091,36 +1091,36 @@ ins address: 0x5277162 => branch count: 211 => taken count: 173 => complexe?: fa
 ins address: 0x5277239 => branch count: 580 => taken count: 542 => complexe?: false
 ins address: 0x5277244 => branch count: 38 => taken count: 37 => complexe?: false
 ins address: 0x5277259 => branch count: 4 => taken count: 3 => complexe?: false
-ins address: 0x5277307 => branch count: 13226 => taken count: 12878 => complexe?: false
+ins address: 0x5277307 => branch count: 13210 => taken count: 12862 => complexe?: false
 ins address: 0x5277320 => branch count: 4858 => taken count: 4510 => complexe?: false
 ins address: 0x5277329 => branch count: 348 => taken count: 160 => complexe?: false
 ins address: 0x5277339 => branch count: 160 => taken count: 160 => complexe?: false
-ins address: 0x5277384 => branch count: 10008 => taken count: 8998 => complexe?: false
+ins address: 0x5277384 => branch count: 10004 => taken count: 8994 => complexe?: false
 ins address: 0x5277393 => branch count: 1010 => taken count: 1008 => complexe?: false
-ins address: 0x5277419 => branch count: 8998 => taken count: 8840 => complexe?: true
-ins address: 0x5277493 => branch count: 921 => taken count: 385 => complexe?: false
-ins address: 0x5277545 => branch count: 536 => taken count: 493 => complexe?: false
-ins address: 0x5277589 => branch count: 493 => taken count: 493 => complexe?: false
-ins address: 0x5277904 => branch count: 493 => taken count: 469 => complexe?: false
-ins address: 0x5277934 => branch count: 115 => taken count: 49 => complexe?: false
-ins address: 0x5277943 => branch count: 66 => taken count: 48 => complexe?: false
+ins address: 0x5277419 => branch count: 8994 => taken count: 8836 => complexe?: true
+ins address: 0x5277493 => branch count: 921 => taken count: 397 => complexe?: false
+ins address: 0x5277545 => branch count: 524 => taken count: 491 => complexe?: false
+ins address: 0x5277589 => branch count: 491 => taken count: 491 => complexe?: false
+ins address: 0x5277904 => branch count: 491 => taken count: 476 => complexe?: false
+ins address: 0x5277934 => branch count: 80 => taken count: 31 => complexe?: false
+ins address: 0x5277943 => branch count: 49 => taken count: 32 => complexe?: false
 ins address: 0x5277948 => branch count: 921 => taken count: 344 => complexe?: true
-ins address: 0x5277977 => branch count: 577 => taken count: 539 => complexe?: false
-ins address: 0x5278019 => branch count: 38 => taken count: 19 => complexe?: false
-ins address: 0x5278030 => branch count: 19 => taken count: 19 => complexe?: false
+ins address: 0x5277977 => branch count: 577 => taken count: 536 => complexe?: false
+ins address: 0x5278019 => branch count: 41 => taken count: 19 => complexe?: false
+ins address: 0x5278030 => branch count: 22 => taken count: 22 => complexe?: false
 ins address: 0x5278151 => branch count: 16480 => taken count: 16461 => complexe?: false
 ins address: 0x5278156 => branch count: 19 => taken count: 13 => complexe?: false
-ins address: 0x5278201 => branch count: 31 => taken count: 6 => complexe?: false
-ins address: 0x5278224 => branch count: 38 => taken count: 10 => complexe?: false
-ins address: 0x5278250 => branch count: 651 => taken count: 84 => complexe?: true
-ins address: 0x5278255 => branch count: 921 => taken count: 18 => complexe?: false
-ins address: 0x5278264 => branch count: 903 => taken count: 385 => complexe?: true
-ins address: 0x5278280 => branch count: 518 => taken count: 33 => complexe?: false
-ins address: 0x5278321 => branch count: 485 => taken count: 485 => complexe?: false
-ins address: 0x5278615 => branch count: 485 => taken count: 466 => complexe?: false
-ins address: 0x5278638 => branch count: 85 => taken count: 33 => complexe?: true
-ins address: 0x5278664 => branch count: 493 => taken count: 493 => complexe?: false
-ins address: 0x5278684 => branch count: 485 => taken count: 485 => complexe?: false
+ins address: 0x5278201 => branch count: 34 => taken count: 6 => complexe?: false
+ins address: 0x5278224 => branch count: 41 => taken count: 13 => complexe?: false
+ins address: 0x5278250 => branch count: 641 => taken count: 77 => complexe?: true
+ins address: 0x5278255 => branch count: 921 => taken count: 17 => complexe?: false
+ins address: 0x5278264 => branch count: 904 => taken count: 388 => complexe?: true
+ins address: 0x5278280 => branch count: 516 => taken count: 33 => complexe?: false
+ins address: 0x5278321 => branch count: 483 => taken count: 483 => complexe?: false
+ins address: 0x5278615 => branch count: 483 => taken count: 461 => complexe?: false
+ins address: 0x5278638 => branch count: 120 => taken count: 65 => complexe?: true
+ins address: 0x5278664 => branch count: 491 => taken count: 491 => complexe?: false
+ins address: 0x5278684 => branch count: 483 => taken count: 483 => complexe?: false
 ins address: 0x5280359 => branch count: 288 => taken count: 288 => complexe?: true
 ins address: 0x5280538 => branch count: 80 => taken count: 80 => complexe?: true
 ins address: 0x5280589 => branch count: 2 => taken count: 2 => complexe?: true
@@ -1129,7 +1129,8 @@ ins address: 0x5281146 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5281264 => branch count: 88 => taken count: 88 => complexe?: true
 ins address: 0x5281278 => branch count: 88 => taken count: 4 => complexe?: false
 ins address: 0x5281320 => branch count: 84 => taken count: 84 => complexe?: true
-ins address: 0x5282275 => branch count: 211 => taken count: 211 => complexe?: false
+ins address: 0x5282275 => branch count: 211 => taken count: 210 => complexe?: false
+ins address: 0x5282379 => branch count: 211 => taken count: 2 => complexe?: false
 ins address: 0x5282853 => branch count: 7 => taken count: 7 => complexe?: false
 ins address: 0x5283323 => branch count: 1 => taken count: 1 => complexe?: true
 ins address: 0x5283426 => branch count: 1 => taken count: 1 => complexe?: true
@@ -1170,18 +1171,18 @@ ins address: 0x5292640 => branch count: 9 => taken count: 9 => complexe?: false
 ins address: 0x5292933 => branch count: 5 => taken count: 5 => complexe?: false
 ins address: 0x5292969 => branch count: 5 => taken count: 5 => complexe?: false
 ins address: 0x5293008 => branch count: 5 => taken count: 5 => complexe?: false
-ins address: 0x5293093 => branch count: 25 => taken count: 20 => complexe?: false
+ins address: 0x5293093 => branch count: 20 => taken count: 15 => complexe?: false
 ins address: 0x5293101 => branch count: 5 => taken count: 5 => complexe?: false
 ins address: 0x5293158 => branch count: 5 => taken count: 5 => complexe?: false
 ins address: 0x5293253 => branch count: 5 => taken count: 5 => complexe?: false
-ins address: 0x5293363 => branch count: 25 => taken count: 25 => complexe?: false
-ins address: 0x5293384 => branch count: 25 => taken count: 20 => complexe?: false
+ins address: 0x5293363 => branch count: 20 => taken count: 20 => complexe?: false
+ins address: 0x5293384 => branch count: 20 => taken count: 15 => complexe?: false
 ins address: 0x5294150 => branch count: 2271 => taken count: 543 => complexe?: false
 ins address: 0x5294168 => branch count: 543 => taken count: 543 => complexe?: false
-ins address: 0x5294445 => branch count: 22105 => taken count: 6770 => complexe?: false
-ins address: 0x5294453 => branch count: 15335 => taken count: 15335 => complexe?: false
-ins address: 0x5294472 => branch count: 6770 => taken count: 2715 => complexe?: false
-ins address: 0x5294480 => branch count: 4055 => taken count: 4055 => complexe?: false
+ins address: 0x5294445 => branch count: 22105 => taken count: 5038 => complexe?: false
+ins address: 0x5294453 => branch count: 17067 => taken count: 17067 => complexe?: false
+ins address: 0x5294472 => branch count: 5038 => taken count: 2715 => complexe?: false
+ins address: 0x5294480 => branch count: 2323 => taken count: 2323 => complexe?: false
 ins address: 0x5294504 => branch count: 2715 => taken count: 2715 => complexe?: false
 ins address: 0x5294653 => branch count: 3 => taken count: 3 => complexe?: false
 ins address: 0x5294677 => branch count: 3 => taken count: 1 => complexe?: false
@@ -1271,7 +1272,7 @@ ins address: 0x5315404 => branch count: 2 => taken count: 1 => complexe?: false
 ins address: 0x5315696 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5315779 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5316067 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x5316187 => branch count: 7843 => taken count: 7842 => complexe?: false
+ins address: 0x5316187 => branch count: 7298 => taken count: 7297 => complexe?: false
 ins address: 0x5316235 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5316308 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5316667 => branch count: 1 => taken count: 1 => complexe?: true
@@ -1298,8 +1299,8 @@ ins address: 0x5322838 => branch count: 103 => taken count: 103 => complexe?: fa
 ins address: 0x5323470 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5323512 => branch count: 1048576 => taken count: 1048473 => complexe?: false
 ins address: 0x5323561 => branch count: 1048576 => taken count: 1048575 => complexe?: false
-ins address: 0x5323643 => branch count: 498 => taken count: 4 => complexe?: false
-ins address: 0x5323674 => branch count: 494 => taken count: 396 => complexe?: false
+ins address: 0x5323643 => branch count: 497 => taken count: 7 => complexe?: false
+ins address: 0x5323674 => branch count: 490 => taken count: 395 => complexe?: false
 ins address: 0x5323683 => branch count: 102 => taken count: 101 => complexe?: false
 ins address: 0x5323763 => branch count: 498 => taken count: 447 => complexe?: false
 ins address: 0x5323812 => branch count: 447 => taken count: 342 => complexe?: false
@@ -1326,8 +1327,8 @@ ins address: 0x5345350 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5345544 => branch count: 1 => taken count: 1 => complexe?: false
 ins address: 0x5345768 => branch count: 41 => taken count: 41 => complexe?: false
 ins address: 0x5345839 => branch count: 41 => taken count: 2 => complexe?: false
-ins address: 0x5345885 => branch count: 8945180 => taken count: 8929598 => complexe?: false
-ins address: 0x5345907 => branch count: 15582 => taken count: 15532 => complexe?: false
+ins address: 0x5345885 => branch count: 8945180 => taken count: 8929590 => complexe?: false
+ins address: 0x5345907 => branch count: 15590 => taken count: 15540 => complexe?: false
 ins address: 0x5345918 => branch count: 50 => taken count: 14 => complexe?: false
 ins address: 0x5345949 => branch count: 36 => taken count: 10 => complexe?: false
 ins address: 0x5345966 => branch count: 26 => taken count: 5 => complexe?: false
@@ -2271,15 +2272,15 @@ call/ret ins address: 0x4511145 - target: 0x0 => call count: 0 => ret count: 26
 call/ret ins address: 0x4512040 - target: 0x4530464 => call count: 1 => ret count: 0
 call/ret ins address: 0x4512071 - target: 0x0 => call count: 0 => ret count: 1
 call/ret ins address: 0x4512132 - target: 0x0 => call count: 0 => ret count: 9
-call/ret ins address: 0x4512162 - target: 0x4512288 => call count: 15585 => ret count: 0
+call/ret ins address: 0x4512162 - target: 0x4512288 => call count: 15593 => ret count: 0
 call/ret ins address: 0x4512200 - target: 0x4503104 => call count: 53 => ret count: 0
 call/ret ins address: 0x4512221 - target: 0x0 => call count: 0 => ret count: 50
-call/ret ins address: 0x4512229 - target: 0x0 => call count: 0 => ret count: 15507
-call/ret ins address: 0x4512237 - target: 0x0 => call count: 0 => ret count: 16
+call/ret ins address: 0x4512229 - target: 0x0 => call count: 0 => ret count: 15516
+call/ret ins address: 0x4512237 - target: 0x0 => call count: 0 => ret count: 15
 call/ret ins address: 0x4512246 - target: 0x4503104 => call count: 12 => ret count: 0
 call/ret ins address: 0x4512285 - target: 0x0 => call count: 0 => ret count: 12
-call/ret ins address: 0x4512414 - target: 0x4514912 => call count: 15522 => ret count: 0
-call/ret ins address: 0x4512709 - target: 0x0 => call count: 0 => ret count: 39990
+call/ret ins address: 0x4512414 - target: 0x4514912 => call count: 15529 => ret count: 0
+call/ret ins address: 0x4512709 - target: 0x0 => call count: 0 => ret count: 39998
 call/ret ins address: 0x4512782 - target: 0x4512288 => call count: 24405 => ret count: 0
 call/ret ins address: 0x4512797 - target: 0x0 => call count: 0 => ret count: 24405
 call/ret ins address: 0x4512839 - target: 0x0 => call count: 0 => ret count: 24464
@@ -2287,9 +2288,9 @@ call/ret ins address: 0x4512857 - target: 0x0 => call count: 0 => ret count: 244
 call/ret ins address: 0x4512874 - target: 0x0 => call count: 0 => ret count: 202
 call/ret ins address: 0x4512906 - target: 0x0 => call count: 0 => ret count: 42
 call/ret ins address: 0x4513126 - target: 0x0 => call count: 24395 => ret count: 0 (call not taken into account)
-call/ret ins address: 0x4514961 - target: 0x0 => call count: 0 => ret count: 7524
+call/ret ins address: 0x4514961 - target: 0x0 => call count: 0 => ret count: 7541
 call/ret ins address: 0x4515600 - target: 0x0 => call count: 0 => ret count: 19
-call/ret ins address: 0x4515604 - target: 0x0 => call count: 0 => ret count: 7979
+call/ret ins address: 0x4515604 - target: 0x0 => call count: 0 => ret count: 7969
 call/ret ins address: 0x4516324 - target: 0x5313296 => call count: 1 => ret count: 0
 call/ret ins address: 0x4516398 - target: 0x5313520 => call count: 1 => ret count: 0
 call/ret ins address: 0x4516419 - target: 0x5196368 => call count: 1 => ret count: 0
@@ -2677,12 +2678,12 @@ call/ret ins address: 0x5094176 - target: 0x0 => call count: 1 => ret count: 0 (
 call/ret ins address: 0x5094184 - target: 0x5357488 => call count: 1 => ret count: 0
 call/ret ins address: 0x5094193 - target: 0x5238960 => call count: 1 => ret count: 0
 call/ret ins address: 0x5094225 - target: 0x5233472 => call count: 1 => ret count: 0
-call/ret ins address: 0x5094256 - target: 0x5280816 => call count: 1957 => ret count: 0
+call/ret ins address: 0x5094256 - target: 0x5280816 => call count: 2036 => ret count: 0
 call/ret ins address: 0x5094289 - target: 0x0 => call count: 0 => ret count: 1
 call/ret ins address: 0x5094293 - target: 0x5234704 => call count: 1 => ret count: 0
 call/ret ins address: 0x5094308 - target: 0x5234752 => call count: 1 => ret count: 0
 call/ret ins address: 0x5094352 - target: 0x5326704 => call count: 1 => ret count: 0
-call/ret ins address: 0x5094416 - target: 0x5280816 => call count: 570 => ret count: 0
+call/ret ins address: 0x5094416 - target: 0x5280816 => call count: 281 => ret count: 0
 call/ret ins address: 0x5094432 - target: 0x5236816 => call count: 1 => ret count: 0
 call/ret ins address: 0x5094437 - target: 0x5280976 => call count: 1 => ret count: 0
 call/ret ins address: 0x5109871 - target: 0x0 => call count: 9 => ret count: 0 (call not taken into account)
@@ -3576,7 +3577,7 @@ call/ret ins address: 0x5280474 - target: 0x0 => call count: 0 => ret count: 28
 call/ret ins address: 0x5280508 - target: 0x0 => call count: 0 => ret count: 24
 call/ret ins address: 0x5280545 - target: 0x0 => call count: 0 => ret count: 80
 call/ret ins address: 0x5280596 - target: 0x0 => call count: 0 => ret count: 2
-call/ret ins address: 0x5280823 - target: 0x0 => call count: 0 => ret count: 2527
+call/ret ins address: 0x5280823 - target: 0x0 => call count: 0 => ret count: 2317
 call/ret ins address: 0x5280983 - target: 0x0 => call count: 0 => ret count: 3
 call/ret ins address: 0x5281066 - target: 0x0 => call count: 0 => ret count: 3
 call/ret ins address: 0x5281139 - target: 0x5260928 => call count: 1 => ret count: 0
@@ -3586,7 +3587,8 @@ call/ret ins address: 0x5281257 - target: 0x5271104 => call count: 88 => ret cou
 call/ret ins address: 0x5281309 - target: 0x5270896 => call count: 84 => ret count: 0
 call/ret ins address: 0x5281343 - target: 0x0 => call count: 0 => ret count: 4
 call/ret ins address: 0x5282339 - target: 0x0 => call count: 0 => ret count: 211
-call/ret ins address: 0x5282386 - target: 0x0 => call count: 0 => ret count: 211
+call/ret ins address: 0x5282386 - target: 0x0 => call count: 0 => ret count: 209
+call/ret ins address: 0x5282416 - target: 0x0 => call count: 0 => ret count: 2
 call/ret ins address: 0x5282453 - target: 0x0 => call count: 0 => ret count: 6
 call/ret ins address: 0x5282515 - target: 0x0 => call count: 0 => ret count: 6
 call/ret ins address: 0x5282547 - target: 0x0 => call count: 0 => ret count: 3
@@ -3859,7 +3861,7 @@ call/ret ins address: 0x5316060 - target: 0x5280352 => call count: 1 => ret coun
 call/ret ins address: 0x5316122 - target: 0x5282560 => call count: 1 => ret count: 0
 call/ret ins address: 0x5316153 - target: 0x5282624 => call count: 1 => ret count: 0
 call/ret ins address: 0x5316161 - target: 0x5282368 => call count: 1 => ret count: 0
-call/ret ins address: 0x5316176 - target: 0x4330960 => call count: 7843 => ret count: 0
+call/ret ins address: 0x5316176 - target: 0x4330960 => call count: 7298 => ret count: 0
 call/ret ins address: 0x5316217 - target: 0x5282528 => call count: 1 => ret count: 0
 call/ret ins address: 0x5316228 - target: 0x5280352 => call count: 1 => ret count: 0
 call/ret ins address: 0x5316300 - target: 0x5286864 => call count: 1 => ret count: 0
@@ -3984,7 +3986,7 @@ call/ret ins address: 0x5345337 - target: 0x5298032 => call count: 1 => ret coun
 call/ret ins address: 0x5345558 - target: 0x0 => call count: 0 => ret count: 1
 call/ret ins address: 0x5345615 - target: 0x5357216 => call count: 1 => ret count: 0
 call/ret ins address: 0x5345640 - target: 0x5345280 => call count: 1 => ret count: 0
-call/ret ins address: 0x5345894 - target: 0x4512144 => call count: 15582 => ret count: 0
+call/ret ins address: 0x5345894 - target: 0x4512144 => call count: 15590 => ret count: 0
 call/ret ins address: 0x5345933 - target: 0x4512832 => call count: 36 => ret count: 0
 call/ret ins address: 0x5345941 - target: 0x4512864 => call count: 36 => ret count: 0
 call/ret ins address: 0x5345958 - target: 0x4512864 => call count: 26 => ret count: 0
@@ -5990,10 +5992,10 @@ call/ret ins address: 0x7036977 - target: 0x0 => call count: 112 => ret count: 0
 call/ret ins address: 0x7037004 - target: 0x0 => call count: 0 => ret count: 1
 call/ret ins address: 0x7037048 - target: 0x0 => call count: 0 => ret count: 1
 
-The bug depth with conditional branches = 1052
-Number of all conditional branches = 21131744
-Complexity to reach the bug (in number) = 633
-The bug depth with call instructions = 10703
+The bug depth with conditional branches = 20802708
+Number of all conditional branches = 21343027
+Complexity to reach the bug (in number) = 99060
+The bug depth with call instructions = 10158
 Number of unique functions = 633
-Number of all call instructions = 177799
+Number of all call instructions = 177067
 
