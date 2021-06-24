@@ -15,13 +15,13 @@ fi
 if [ -z "${2}" ]
 then
     specific=true
-    echo "[+] Info: Your application is on 'reach specific line' mode!"
+    echo "[+] Info: Your application is in 'reach specific line' mode!"
 fi
 
 if [ -n "${3}" ]
 then
     binary=true
-    echo "[+] Info: Your application is on 'specific binary' mode!"
+    echo "[+] Info: Your application is in 'specific binary' mode!"
 fi
 
 
