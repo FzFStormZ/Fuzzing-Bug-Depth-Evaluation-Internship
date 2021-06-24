@@ -1,11 +1,11 @@
 [*] Main Binary Image: /root/Fuzzing-Bug-Depth-Evaluation-Internship/scripts/review_binaries/test-exit-3
 [+] Image limits 0x94184733921280 - 0x94184733929895
 
-ins address: 0x94184733925394 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x94184733925601 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x94184733925666 => branch count: 1 => taken count: 1 => complexe?: false
-ins address: 0x94184733925816 => branch count: 201 => taken count: 200 => complexe?: false
-ins address: 0x94184733925929 => branch count: 1 => taken count: 1 => complexe?: true
+ins address: 0x94184733925394 => branch count: 1 => taken count: 1 => complex?: false
+ins address: 0x94184733925601 => branch count: 1 => taken count: 1 => complex?: false
+ins address: 0x94184733925666 => branch count: 1 => taken count: 1 => complex?: false
+ins address: 0x94184733925816 => branch count: 201 => taken count: 200 => complex?: false
+ins address: 0x94184733925929 => branch count: 1 => taken count: 1 => complex?: true
 
 call/ret ins address: 0x94184733925402 - target: 0x0 => call count: 0 => ret count: 1
 call/ret ins address: 0x94184733925576 - target: 0x0 => call count: 1 => ret count: 0 (call not taken into account)
