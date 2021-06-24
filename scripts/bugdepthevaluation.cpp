@@ -297,7 +297,7 @@ VOID Fini(INT32 code, VOID *v)
             TraceFile << "ins address: 0x" << it->first
                     << " => branch count: " << it->second._branch 
                     << " => taken count: "  << it->second._taken 
-                    << " => complexe?: " << (it->second._complexity ? "true" : "false") << "\n";
+                    << " => complex?: " << (it->second._complexity ? "true" : "false") << "\n";
 
             // Only multi-bytes non-zero comparison
             if (it->second._complexity) {
