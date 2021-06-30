@@ -45,33 +45,25 @@ To get a local copy up and running follow these simple example steps :
 
    ```sh
 Fuzzing-Bug-Depth-Evaluation-Internship/
-|
 ├── fuzzer-test-suite/
 │   └── ...
-|
 ├── internship_report_&_oral_presentation/
 │   └── ...
-|
 ├── old/
 |   └── ...
-|
 ├── pin/
 │   └── ...
-|
 ├── results/
 │   ├── review_results/
 │   │   └── ...
 │   └── ...
-|
 ├── scripts/
 │   ├── review_binaries/
 │   │   └── ...
 │   ├── bugdepthevaluation.cpp
 │   └── Makefile
-|
 ├── weekly_reports/
 │   └── ...
-|
 ├── eval_automatic_control.sh
 ├── README.md
 └── requirements.sh
