@@ -43,7 +43,7 @@ To get a local copy up and running follow these simple example steps :
 
 ### Tree Graph :evergreen_tree:
 
-   ```sh
+   ```
 Fuzzing-Bug-Depth-Evaluation-Internship/
 ├── fuzzer-test-suite/
 │   └── ...
@@ -85,7 +85,7 @@ Fuzzing-Bug-Depth-Evaluation-Internship/
 
 3. Choose the application you want to run a bug depth evaluation
 
- ```sh
+ ```
  libxml2-v2.9.2 for example
  ```
  
